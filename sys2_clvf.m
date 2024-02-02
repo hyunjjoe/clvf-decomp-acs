@@ -15,7 +15,7 @@ g = createGrid(grid_min, grid_max, N, pdDims);
 %% time vecto
 
 t0 = 0;
-tMax = 1;
+tMax = 50;
 dt = 0.05;
 tau = t0:dt:tMax;
 
@@ -40,16 +40,17 @@ speed = params.v;
 sys2 = sys2([0, 0], wRange, speed, dRange);
 
 gamma1 = 0;
-gamma2 = 0.3;
+gamma2 = 0.1;
 gamma3 = 3;
 
 %% target set
 R = 0;
-data0 = shapeCylinder(g, 2, [0; 0], R);
-
-% data0_1 = shapeCylinder(g, 3, [0; -1; 0], R);
-% data0_2 = shapeCylinder(g, 3, [0; 1; 0], R);
-% data0 = min(data0_1,data0_2);
+data0 = shapeCylinder(g, [], [0; 0], R);
+%data0 = shapeCylinder(g, [], [0; 0], R);
+%data0 = shapeRectangleByCorners(g, [-R; -pi], [R; pi]);
+%data0_1 = shapeCylinder(g, 3, [0; -1; 0], R);
+%data0_2 = shapeCylinder(g, 3, [0; 1; 0], R);
+%data0 = min(data0_1,data0_2);
 
 % Put grid and dynamic systems into schemeData
 schemeData.grid = g;
@@ -62,7 +63,7 @@ schemeData.dMode = dMode;
 
 %% Compute value function
 %disp(sys1)
-[data1,tau1] = ComputeHJ(data0,tau,schemeData,1,gamma2);
+[data1,tau1] = ComputeHJ(data0,tau,schemeData,1,gamma1);
 % [data2,tau2] = ComputeHJ(data00,tau,schemeData,2,gamma2);
 % [data3,tau3] = ComputeHJ(data0,tau,schemeData,3,gamma3);
 % % [data4,tau4] = ComputeHJ(data01,tau,schemeData,4,gamma3);
@@ -82,14 +83,9 @@ HJIextraArgs.visualize.initialValueSet = 1;
 HJIextraArgs.visualize.figNum = n; %set figure number
 HJIextraArgs.visualize.deleteLastPlot = true; %delete previous plot as you update
 HJIextraArgs.targetFunction = data0;
-HJIextraArgs.convergeThreshold = 0.002;
+HJIextraArgs.convergeThreshold = 0.01;
 HJIextraArgs.stopConverge = 1;
 HJIextraArgs.keepLast = 1;
-%HJIextraArgs.makeVideo = 0;
-%HJIextraArgs.visualize.plotData.plotDims = [1 0]; %plot x
-%HJIextraArgs.visualize.plotData.projpt = [0]; %project at theta = 0
-%HJIextraArgs.visualize.viewAngle = [30,45]; % view 2D
-%HJIextraArgs.visualize.viewAxis = [-1.5 1.5 -1.5 1.5 -pi pi];
 HJIextraArgs.ignoreBoundary = 1;
 schemeData.clf.gamma = gamma;
 

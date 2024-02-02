@@ -61,8 +61,9 @@ function [u_ad_min, u_ad_max, grad1, grad2] = admis(obj, yLast, y, schemeData, t
   u_ad_min = zeros(grid.shape);
   u_ad_max = zeros(grid.shape);
 %% Except the Case where deriv{2} == 0
-  i_set = find(data <= 0);
-  i_outset = find(data > 0);
+  i_set = find(data <= 0); % >0 ????
+  i_outset = find(data > 0); %remove outset or change i_set to outset)
+%Equilibrium Point vs. Smallest control invariant set (Dubin's car)
 
 %   i_0 = find((-1e-4 <deriv{2}) & (deriv{2}  < 1e-4));
 %   u_ad_min(i_0) = uOpt(i_0);
@@ -77,8 +78,11 @@ function [u_ad_min, u_ad_max, grad1, grad2] = admis(obj, yLast, y, schemeData, t
         
       u_ad_min(i_set) = uOpt(i_set);
       u_ad_max(i_set) = uOpt(i_set);
-
+      %dottheta = [-V(x,T)/deltaT - (Vy)*doty]/(Vtheta)   
       u_ad_max(i_p) = max(min((-0.04-dataLast(i_p) - deriv{1}(i_p).*dx{1}(i_p).*deltaT)./(deriv{2}(i_p).*deltaT), u(2)), u(1));
+      %(-0.04-dataLast(i_p) - deriv{1}(i_p).*dx{1}(i_p).*deltaT)./
+      %(deriv{2}(i_p).*deltaT)
+
       u_ad_min(i_n) = min(max((-0.04-dataLast(i_n) - deriv{1}(i_n).*dx{1}(i_n).*deltaT)./(deriv{2}(i_n).*deltaT), u(1)), u(2));
     
   elseif schemeData.uMode == 'max'
@@ -93,7 +97,8 @@ function [u_ad_min, u_ad_max, grad1, grad2] = admis(obj, yLast, y, schemeData, t
 
       u_ad_min(i_p) = min(max((0.05-dataLast(i_p) - deriv{1}(i_p).*dx{1}(i_p).*deltaT)./(deriv{2}(i_p).*deltaT), u(1)), u(2));
       u_ad_max(i_n) = max(min((0.05-dataLast(i_n) - deriv{1}(i_n).*dx{1}(i_n).*deltaT)./(deriv{2}(i_n).*deltaT), u(2)), u(1));
-    
+
+  
   end
 
   u_ad_max(u_ad_max<u_ad_min) = uOpt(u_ad_max<u_ad_min);
