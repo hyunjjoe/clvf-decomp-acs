@@ -28,8 +28,6 @@ dMode = 'max';
 
 %% Pack problem parameters
 params.v = 1; % Velocity of the Dubins car
-params.pxd = 0; % Desired postion
-params.pyd = 0; % Desired velocity
 params.u_max = 3; % maximum control input
 params.u_min  = -3; % minimum control input 
 
@@ -67,8 +65,8 @@ schemeData.dMode = dMode;
 % [data2,tau2] = ComputeHJ(data00,tau,schemeData,2,gamma2);
 % [data3,tau3] = ComputeHJ(data0,tau,schemeData,3,gamma3);
 % % [data4,tau4] = ComputeHJ(data01,tau,schemeData,4,gamma3);
-
-
+mind = min(data1,[],'all');
+data1 = data1 - mind;
 % Save the value function and grid 
 save('data_sys1.mat','data1')
 save('g_sys1.mat','g')

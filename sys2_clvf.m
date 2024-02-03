@@ -28,8 +28,6 @@ dMode = 'max';
 
 %% Pack problem parameters
 params.v = 1; % Velocity of the Dubins car
-params.pxd = 0; % Desired postion
-params.pyd = 0; % Desired velocity
 params.u_max = 3; % maximum control input
 params.u_min  = -3; % minimum control input 
 
