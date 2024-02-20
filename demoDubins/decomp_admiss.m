@@ -16,8 +16,8 @@ dt = 0.05;
 speed = 1;
 
 %% Pack problem parameters
-params.u_max = pi/4; % maximum control input
-params.u_min  = -pi/4; % minimum control input 
+params.u_max = pi/2; % maximum control input
+params.u_min  = -pi/2; % minimum control input 
 wRange = [ params.u_min , params.u_max ];
 % Define dynamic system
 dsys1 = sys1([0, 0], wRange, speed, [0,0]);

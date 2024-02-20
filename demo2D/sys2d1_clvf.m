@@ -39,6 +39,7 @@ gamma3 = 3;
 %% target set
 R = 0;
 data0 = shapeCylinder(g, [], [0; 0], R);
+data0 = shapeRectangleByCorners(g, [0; 0], [0; 0]);
 
 % Put grid and dynamic systems into schemeData
 schemeData.grid = g;

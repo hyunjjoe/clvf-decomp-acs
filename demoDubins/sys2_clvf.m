@@ -28,8 +28,8 @@ dMode = 'max';
 
 %% Pack problem parameters
 params.v = 1; % Velocity of the Dubins car
-params.u_max = pi/4; % maximum control input
-params.u_min  = -pi/4; % minimum control input 
+params.u_max = pi/2; % maximum control input
+params.u_min  = -pi/2; % minimum control input 
 
 %obj = Cart1D(x, uMin, uMax)
 wRange = [ params.u_min , params.u_max ];
@@ -43,8 +43,8 @@ gamma3 = 3;
 
 %% target set
 R = 0;
-data0 = shapeCylinder(g, [], [0; 0], R);
 %data0 = shapeCylinder(g, [], [0; 0], R);
+data0 = shapeRectangleByCorners(g, [0; 0], [0; 0]);
 %data0 = shapeRectangleByCorners(g, [-R; -pi], [R; pi]);
 %data0_1 = shapeCylinder(g, 3, [0; -1; 0], R);
 %data0_2 = shapeCylinder(g, 3, [0; 1; 0], R);

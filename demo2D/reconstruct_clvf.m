@@ -29,3 +29,5 @@ data_full = importdata("data_full.mat");
 visFuncIm(g_full, data_full,'red',0.5);
 hold on;
 visFuncIm(g, data_intersection, 'blue', 0.5);
+
+visFuncIm(g, data_full-data_intersection, 'green', 0.5);
