@@ -20,7 +20,7 @@ uOpt = cell(obj.nu, 1);
 if strcmp(uMode, 'min')
   for i = 1:2
     if any(dims == i)
-        uOpt{i} = (deriv{dims==i}>=0)*obj.uRange{1}(i) + (deriv{dims==i}<0)*obj.uRange{2}(i);
+        uOpt{i} = (deriv{dims==i}>=0)*obj.uRange{i}(1) + (deriv{dims==i}<0)*obj.uRange{i}(2);
     end
   end
 else

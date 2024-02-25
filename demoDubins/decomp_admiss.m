@@ -65,4 +65,4 @@ visFuncIm(g1,u_adms1,'red',0.4);
 hold on;
 visFuncIm(g2,u_adms2,'blue',0.4);
 
-save('demoDubins/decomposed.mat','decomposed')
+save('decomposed.mat','decomposed')

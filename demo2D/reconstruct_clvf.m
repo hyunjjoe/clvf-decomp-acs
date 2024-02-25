@@ -21,7 +21,7 @@ data1_expand = permute(repmat(data1,[1 dim_y]), [1 2]);
 data2_expand = permute(repmat(data2,[1 dim_x]), [2 1]);
 %data_intersection = data1_expand+data2_expand;
 data_intersection = max(data1_expand, data2_expand);
-
+save('data_recon.mat','data_intersection')
 %% 2. Compare with Full Sys
 g_full = importdata("g_full.mat");
 data_full = importdata("data_full.mat");

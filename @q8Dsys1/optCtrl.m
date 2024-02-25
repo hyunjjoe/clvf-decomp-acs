@@ -16,7 +16,7 @@ end
 
 %% Optimal control
 if strcmp(uMode, 'min')
-    uOpt = (deriv{dims==3}>=0)*obj.uRange(1) + (deriv{dims==3}<0)*obj.uRange(2);
+    uOpt = (deriv{dims==4}>=0)*obj.uRange(1) + (deriv{dims==4}<0)*obj.uRange(2);
 else
   error('Unknown uMode!')
 end

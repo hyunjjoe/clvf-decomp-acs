@@ -67,10 +67,10 @@ schemeData.dMode = dMode;
 % [data3,tau3] = ComputeHJ(data0,tau,schemeData,3,gamma3);
 % % [data4,tau4] = ComputeHJ(data01,tau,schemeData,4,gamma3);
 mind = min(data1,[],'all');
-%data1 = data1-mind;
+data1 = data1-mind;
 % Save the value function and grid 
-save('demoDubins/data_sys1.mat','data1')
-save('demoDubins/g_sys1.mat','g')
+save('data_sys1.mat','data1')
+save('g_sys1.mat','g')
 
 
 %%

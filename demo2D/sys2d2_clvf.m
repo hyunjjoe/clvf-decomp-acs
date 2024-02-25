@@ -59,8 +59,8 @@ schemeData.dMode = dMode;
 %mind = min(data1,[],'all');
 %data1 = data1 - mind;
 % Save the value function and grid 
-save('demo2D/data_sys2.mat','data1')
-save('demo2D/g_sys2.mat','g')
+save('data_sys2.mat','data1')
+save('g_sys2.mat','g')
 
 
 %%

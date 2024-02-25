@@ -2,9 +2,6 @@ classdef nonlinear2d < DynSys
     properties
         % control bounds
         uRange
-
-        % Disturbance
-        dRange
     
         % Dimensions that are active
         dims
@@ -12,7 +9,7 @@ classdef nonlinear2d < DynSys
     end
 
     methods
-        function obj = nonlinear2d(x, uRange, dRange, dims)
+        function obj = nonlinear2d(x, uRange, dims)
             % obj = nonlinear2d(x, uRange, dMax, dims)
             %     2d class
             %
@@ -37,23 +34,15 @@ classdef nonlinear2d < DynSys
             end
             
             if nargin < 2
-              uRange = {[-3.5;-1];[3.5;1]};
+              uRange = {[-3.5,-1];[3.5,1]};
             end
             
             if nargin < 3
-              dRange = {[0;0];[0;0]};
-            end
-            
-            if nargin < 4
               dims = 1:2;
             end
             
             if ~iscell(uRange)
               uRange = {-uRange; uRange};
-            end
-            
-            if ~iscell(dRange)
-              dRange = {-dRange,dRange};
             end
 
             % Basic system properties
@@ -64,7 +53,6 @@ classdef nonlinear2d < DynSys
             obj.xhist = obj.x;
             
             obj.uRange = uRange;
-            obj.dRange = dRange;
             obj.dims = dims;
         end
 
