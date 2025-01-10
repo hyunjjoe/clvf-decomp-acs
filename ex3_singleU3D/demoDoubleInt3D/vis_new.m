@@ -23,8 +23,8 @@ S_gamma_end = importdata('S_gamma_end.mat');
 figure
 set(gcf,'unit','normalized','position',[0.2,0.2,0.6,0.65]);
 
-subplot(2,2,1)
-set(gca,'Position', [ 0.1, 0.6, 0.35, 0.3]) % subplot 1
+subplot(1,4,1)
+% set(gca,'Position', [ 0.1, 0.6, 0.35, 0.3]) % subplot 1
 
 sg=visSetIm(g, recon_g01, 'g', S_gamma.level);
 hold on
@@ -44,8 +44,8 @@ ylabel('$x_2$', 'Interpreter', 'latex', 'FontSize', 25 );
 zlabel('$x_3$', 'Interpreter', 'latex', 'FontSize', 25 );
 title('$ \mathcal S_\gamma$', 'Interpreter', 'latex', 'FontSize', 20 );
 
-subplot(2,2,2)
-set(gca,'Position', [ 0.55, 0.6, 0.35, 0.3]) % subplot 1
+subplot(1,4,2)
+% set(gca,'Position', [ 0.55, 0.6, 0.35, 0.3]) % subplot 1
 
 visSetIm(g, recon_g01, 'g', S_gamma_end.level);
 hold on
@@ -65,8 +65,8 @@ ylabel('$x_2$', 'Interpreter', 'latex', 'FontSize', 25 );
 zlabel('$x_3$', 'Interpreter', 'latex', 'FontSize', 25 );
 title('$\bar {\mathcal S}_\gamma$', 'Interpreter', 'latex', 'FontSize', 20 );
 
-subplot(2,2,3)
-set(gca,'Position', [ 0.1, 0.15, 0.35, 0.3]) % subplot 1
+subplot(1,4,3)
+% set(gca,'Position', [ 0.1, 0.15, 0.35, 0.3]) % subplot 1
 tj = plot3(traj.x(1,:), traj.x(2,:),traj.x(3,:),'lineWidth',1.5,'color','b','lineStyle','--');
 hold on;
 or = plot3(0,0,0,'ro','lineWidth', 2,'MarkerSize',10,'MarkerFaceColor','r');
@@ -89,8 +89,8 @@ zlabel('$x_3$', 'Interpreter', 'latex', 'FontSize', 25 );
 title('Optimal Traj', 'Interpreter', 'latex', 'FontSize', 20 );
 
 % eps = 1.3;
-subplot(2,2,4)
-set(gca,'Position', [ 0.55, 0.15, 0.35, 0.3]) % subplot 1
+subplot(1,4,4)
+% set(gca,'Position', [ 0.55, 0.15, 0.35, 0.3]) % subplot 1
 
 val = plot( traj.t , traj.V,'b','linewidth',1.5);
 

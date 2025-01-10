@@ -61,7 +61,7 @@ full.g0.tau = tau1;
 full.g = g;
 full.tau = tau;
 % Save the value function and grid 
-save('full.mat','full');
+% save('full.mat','full');
 %%
 function [data,tau] = ComputeHJ(data0,tau0,schemeData,n,gamma)
 

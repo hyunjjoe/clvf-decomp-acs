@@ -62,7 +62,7 @@ decomposed.g = g;
 decomposed.tau = tau;
 decomposed.dt = dt;
 % Save the value function and grid 
-save('subsys.mat','decomposed');
+% save('subsys.mat','decomposed');
 
 %%
 function [data,tau] = ComputeHJ(data0,tau0,schemeData,n,gamma)

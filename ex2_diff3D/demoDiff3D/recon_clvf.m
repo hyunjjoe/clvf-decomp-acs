@@ -76,7 +76,7 @@ for i = 1:1: length(tau)-1
 %     end
 end
 toc
-save('u_adms_g1.mat','u_adms')
+% save('u_adms_g1.mat','u_adms')
 %% Reconstruct CLVF
 initial_data = shapeRectangleByCorners(g,[0, 0, 0], [0,0,0]);
 rind = unique(reind);
